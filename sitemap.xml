@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://fileencrypt.online/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://fileencrypt.online/privacy</loc>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://fileencrypt.online/terms</loc>
+    <changefreq>yearly</changefreq>
+  </url>
+</urlset>

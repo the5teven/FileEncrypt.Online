@@ -45,8 +45,9 @@ function encrypt(input,pass) {
         let wordArray = CryptoJS.lib.WordArray.create(reader.result);
         count = true
         let encrypted = CryptoJS.AES.encrypt(wordArray,pass,{iv: iv, padding: CryptoJS.pad.Pkcs7, mode: CryptoJS.mode.CBC});
+        console.log(encrypted)
         count = false
-        let fileEnc = new Blob([encrypted.toString() + CryptoJS.enc.Base64.stringify(iv)]);
+        let fileEnc = new Blob([encrypted.toString() + CryptoJS.enc.Base64.stringify(iv)],{type: "text/plain;base64"});
         let url = window.URL.createObjectURL(fileEnc);
         let filename = CryptoJS.AES.encrypt(file.name,pass,{iv: iv}).toString() + ".enc"
         $("#download-encrypt").attr("href",url)
