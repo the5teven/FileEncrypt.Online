@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="Description" CONTENT="Encrypt files online and in the browser Free - File Encrypt Online"/>
+    <link rel="shortcut icon" type="image/jpg" href="images/lock-2.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <title>File Encrypt Online</title>
+    <script data-ad-client="ca-pub-2046299739497364" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="js/glitch.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="modal fade" id="Modal-Encrypt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered border-warning">
+            <div class="modal-content" style="border: 5px solid #ffc107;">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <img src="images/locked.png" alt="lock" height="100" class="mx-auto d-block"><br>
+                    <div class="model-form">
+                        <h5 class="text-center pb-4">Encrypt File</h5>
+                        <form class="px-1 forms" id="encrypt-form">
+                            <label class="form-label">Password (keep somewhere safe!):</label>
+                            <div class="input-group mb-3">
+                                <input type="text"  id="key-encrypt" class="form-control" placeholder="Enter Password Here" aria-label="Recipient's username" aria-describedby="button-addon2" required>
+                                <button class="btn btn-outline-warning" type="button" id="button-key-encrypt" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Password Copied to Clipboard! Save this Somewhere!">Generate</button>
+                            </div>
+                            <div>
+                                <label for="formFile-key-encrypt" class="form-label">File</label>
+                                <input class="form-control form-control" id="formFile-key-encrypt" type="file" required>
+                            </div>
+                            <br>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-warning btn-lg">Encrypt Your File!</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="loading" style="display: none">
+                        <h5 class="text-center pb-4">Encrypting Your File...</h5>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped bg-info progress-bar-animated encrypt-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+                        </div>
+                    </div>
+                    <div class="downloading" style="display: none">
+                        <h5 class="text-center pb-4">Your File is Done Encrypting!</h5>
+                        <div class="text-center row">
+                            <div class="col-lg d-grid gap-2 pb-3">
+                                <a type="button" id="download-encrypt" class="btn btn-warning btn-lg">Download File</a>
+                            </div>
+                            <div class="col-lg d-grid gap-2 pb-3">
+                                <button type="button" class="btn btn-secondary btn-lg reload" id="reload-encrypt">Encrypt New File</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="Modal-Decrypt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border: 5px solid #6c757d">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <img src="images/unlock.png" alt="unlocked lock" height="100" class="mx-auto d-block mb-3"><br>
+                    <div class="model-form">
+                        <h5 class="text-center">Decrypt File</h5>
+                        <form class="px-1 forms" id="decrypt-form">
+                            <label class="form-label">Password:</label>
+                            <div class="input-group mb-3">
+                                <input type="text"  id="key-decrypt" class="form-control" placeholder="Enter Password Here" aria-label="Recipient's username" aria-describedby="button-addon2" required>
+                            </div>
+                            <div>
+                                <label for="formFile-key-decrypt" class="form-label">File:</label>
+                                <input class="form-control form-control" id="formFile-key-decrypt" type="file" required>
+                            </div>
+                            <br>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-secondary btn-lg">Decrypt Your File!</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="loading" style="display: none">
+                        <h5 class="text-center pb-4">Decrypting Your File...</h5>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped bg-info progress-bar-animated encrypt-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+                        </div>
+                    </div>
+                    <div class="downloading" style="display: none">
+                        <h5 class="text-center pb-4">Your File is Done Decrypting!</h5>
+                        <div class="text-center row">
+                            <div class="col-lg d-grid gap-2 pb-3">
+                                <a type="button" id="download-decrypt" class="btn btn-warning btn-lg">Download File</a>
+                            </div>
+                            <div class="col-lg d-grid gap-2 pb-3">
+                                <button type="button" class="btn btn-secondary btn-lg reload" id="reload-decrypt">Encrypt New File</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light px-4">
+        <a class="navbar-brand" href="#">
+            File Encrypt
+            <img src="images/key.png" alt="key" width="30" height="30" class="d-inline-block align-top">
+            Online
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0" >
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <form action="https://www.paypal.com/donate" method="post" target="_top" class="pt-2">
+                        <input type="hidden" name="hosted_button_id" value="Y54J4GEZTZYRU" />
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="b-example-divider"></div>
+
+    <div class="px-4 py-5 my-5 text-center" id="w1">
+        <img class="d-block mx-auto mb-4" id="main_img" src="images/lock.png" alt="lock" width="100" height="100">
+        <h1 class="display-5 fw-bold ">Client-Side Encryption</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Do you have a file that you would like to keep safe from prying eyes? If yes then you have come to the right place! Use this Website to encrypt your files with <b>AES-256</b> encryption! </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn btn-warning btn-lg px-4 gap-3" data-bs-toggle="modal" data-bs-target="#Modal-Encrypt">Encrypt a File</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4" data-bs-toggle="modal" data-bs-target="#Modal-Decrypt">Decrypt a File</button>
+            </div>
+        </div>
+    </div>
+    <div class="b-example-divider"></div>
+
+    <div class="container px-4 py-5" id="features">
+        <h2 class="pb-2 border-bottom">Features</h2>
+        <div class="row row-cols-1 row-cols-lg-3 g-4 py-5">
+            <div class="col d-flex align-items-start">
+                <img src="images/desktop.png" alt="desktop" class="bi text-muted flex-shrink-0 me-3" width="50" height="50"/>
+                <div>
+                    <h4 class="fw-bold mb-0 ">Client-Side</h4>
+                    <p>All Encryption is done in your internet browser! Dont trust us turn off your Wifi!</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <img src="images/encripted-file.png" alt="encripted-file" class="bi text-muted flex-shrink-0 me-3" width="50" height="50"/>
+                <div>
+                    <h4 class="fw-bold mb-0 ">AES-256</h4>
+                    <p>AES stands for Advanced Encryption Standard. AES-256's uses a encryption key that is 256 bits long! In sort a supercomputer would take billions of years to crack a AES-256 encryption with a strong key.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <img src="images/dices.png" alt="dices" class="bi text-muted flex-shrink-0 me-3" width="50" height="50"/>
+                <div>
+                    <h4 class="fw-bold mb-0 ">No Two files Are The Same!</h4>
+                    <p>A randomly generated IV (Initialization vector) is used to add randomness to your start of your encryption process. This results in no two files looking the same to an attacker!</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <img src="images/private-detective.png"  alt="private-detective" class="bi text-muted flex-shrink-0 me-3" width="50" height="50"/>
+                <div>
+                    <h4 class="fw-bold mb-0 ">Privacy</h4>
+                    <p>No information about your files are sent to me or linked to you in anyway! we are blind to how you use the site. To see what is collected see the Privacy Policy</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <img src="images/document.png" alt="document" class="bi text-muted flex-shrink-0 me-3" width="50" height="50"/>
+                <div>
+                    <h4 class="fw-bold mb-0 ">Any File Type</h4>
+                    <p>You can encrypt any type of file you want. Tip: Want to encrypt many files at ones? why not compress them into a zip file!</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <img src="images/key.png" alt="key" class="bi text-muted flex-shrink-0 me-3" width="50" height="50"/>
+                <div>
+                    <h4 class="fw-bold mb-0 ">Generate or Use Your Own Password!</h4>
+                    <p>If you have a Strong key why not use it? If not do not worry we have an app for that.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="b-example-divider"></div>
+    <div class="container row mx-auto pt-5 pb-5" id="contact">
+        <div class="col-lg">
+            <img src="images/message.png"  alt="message" height="400px" style="display: block;margin: auto;"/>
+        </div>
+
+        <div class="col-lg">
+            <h2 class="pb-3 border-bottom">Contact</h2>
+            <form action="https://formspree.io/mknkqvwd" method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" class="form-control " name="user_name" />
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="mb-3">
+                    <label for="msg" class="form-label">Message</label>
+                    <textarea class="form-control" id="msg" rows="3"></textarea>
+                </div>
+                <div class="mb-3 d-grid gap-2 pb-3">
+                    <button type="submit" class="btn btn-info btn-lg">Send your message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    </div>
+
+    <div class="b-example-divider"></div>
+<footer class="footer mt-auto py-2 bg-light">
+    <br>
+    <div class="container">
+        <div class="text-center">
+            <a href="terms">Terms and Conditions</a>
+        </div>
+        <div class="text-center">
+            <a href="privacy">Privacy Policy</a>
+        </div>
+        <div class="text-center">
+            <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        </div>
+        <br>
+    </div>
+</footer>
+<script src="js/crypto-js.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
