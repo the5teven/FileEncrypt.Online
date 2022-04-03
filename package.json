@@ -1,0 +1,23 @@
+{
+  "name": "encrypt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the5teven/FileEncrypt.Online.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/the5teven/FileEncrypt.Online/issues"
+  },
+  "homepage": "https://github.com/the5teven/FileEncrypt.Online#readme",
+  "devDependencies": {
+    "workbox-build": "^6.5.2"
+  }
+}

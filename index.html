@@ -8,13 +8,12 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="File Encrypt">
     <meta name="apple-mobile-web-app-title" content="File Encrypt">
-    <meta name="theme-color" content="#FFB655">
-    <meta name="msapplication-navbutton-color" content="#FFB655">
+    <meta name="theme-color" content="#ffc107">
+    <meta name="msapplication-navbutton-color" content="#ffc107">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="msapplication-starturl" content="/">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="Description" CONTENT="Encrypt and decrypt any file online for Free. Keep your files private with Advanced AES encryption. File Encrypt Online runs 100% client-side. That means your files never leave your computer!"/>
-    <meta name="theme-color" content="#FFB655">
     <link rel="icon" type="image/png" sizes="48x48" href="icons/icon_48x48.png">
     <link rel="apple-touch-icon" type="image/png" sizes="48x48" href="icons/icon_48x48.png">
     <link rel="icon" type="image/png" sizes="72x72" href="icons/icon_72x72.png">
@@ -187,7 +186,7 @@
     <div class="b-example-divider"></div>
 
     <div class="px-4 py-5 my-5 text-center" id="w1">
-        <img alt="" class="d-block mx-auto mb-4" id="main_img" src="images/lock.png" width="200" height="200">
+        <img alt="" class="d-block mx-auto mb-4" id="main_img" src="images/lock.png" width="150" height="150">
         <h1 class="display-5 fw-bold ">Client-Side Encryption</h1>
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">Do you have a file that you would like to keep safe from prying eyes? If yes then you have come to the right place! Use this Website to encrypt your files with <b>AES-256</b> encryption! </p>
@@ -301,5 +300,15 @@
 <script defer src="js/glitch.js"></script>
 <script defer src="js/crypto-js.js"></script>
 <script defer src="js/script.js"></script>
+<script>
+    if("serviceWorker" in navigator) {
+        window.addEventListener("load",()=>{
+            navigator.serviceWorker.register("sw.js").catch(error=>{
+                console.log("There was an error", error)
+            })
+        }
+        )
+    }
+</script>
 </body>
 </html>
